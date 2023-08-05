@@ -1,0 +1,21 @@
+version: '3.7'
+
+# 컴퓨터들
+services:
+
+  # 컴퓨터 이름
+  my-backend:
+    build:
+      # 파일 경로
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 4000:4000
+  
+  # 컴퓨터 이름
+  my-database: 
+    image: mongo:5
+    # name resolution 떄문에 포트포워딩이 필요 없어짐. 도커컴포즈를 하면 해당 도커들과 통로가 생김
+    # 몽고 DB 컴패스에서 접속 안됨, 하지만 네임리졸루션으로 express 에서는 접속 됨
+    # ports: 
+    #   - 27017:27017
