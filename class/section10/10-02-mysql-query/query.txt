@@ -1,0 +1,54 @@
+show databases
+;
+
+use myproject
+;
+
+show tables
+;
+
+desc product 
+;
+
+SELECT * FROM product
+;
+
+INSERT into product (id, name, description, price) values (uuid(), '마우스', '정말 좋은 마우스 입니다', 15000);
+
+INSERT into product (id, name, description, price) values (uuid(), '노트북', '정말 좋은 노트북 입니다', 20000);
+
+INSERT into product (id, name, description, price) values (uuid(), '셔츠', '정말 좋은 셔츠 입니다', 30000);
+
+DELETE from product WHERE name ='마우스';
+
+UPDATE product SET price = 45000 where name = '셔츠';
+
+
+#===========조인==============
+
+SELECT * from product_sales_location;
+-- 
+INSERT INTO product_sales_location (id, address, addressDetail, lat, lng, meetingTime) values(uuid(), '구로구', '구로디지털단지', 37.28123, 127.1923, '2023-08-23');
+
+UPDATE product set productSaleslocationId = 'e5d0a994-40da-11ee-8704-cd5028d7c03a' where name = '셔츠'
+
+
+SELECT product.id , name, price, address, addressDetail as '상세주소'
+from product, product_sales_location  
+where product.productSaleslocationId = product_sales_location.id;
+
+#===========추가기능들==============
+update product set isSoldout = true where name ='노트북' and price = 20000;
+
+update product set isSoldout = true where name ='노트북' or price = 20000;
+
+#==========주석 쉽게 다는 방법==============
+#			update/delete 에서는 가급적 사용하지 않기
+SELECT * from product 
+where 1 = 1
+and name = '마우스' 
+and price = 5000 
+and isSoldout = false
+;
+
+
