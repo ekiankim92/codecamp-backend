@@ -1,0 +1,45 @@
+14-04-redis git:(main) ✗ docker exec -it 371c15327c3f /bin/bash
+root@371c15327c3f:/data# redis-cli
+127.0.0.1:6379> keys *
+(empty array)
+127.0.0.1:6379> set qqq apple
+OK
+127.0.0.1:6379> get qqq
+"apple"
+127.0.0.1:6379> ttl qqq
+(integer) -1
+127.0.0.1:6379> expire qqq 20
+(integer) 1
+127.0.0.1:6379> ttl qqq
+(integer) 17
+127.0.0.1:6379> ttl qqq
+(integer) 14
+127.0.0.1:6379> ttl qqq
+(integer) 13
+127.0.0.1:6379> ttl qqq\
+(integer) -2
+127.0.0.1:6379> ttl qqq\
+(integer) -2
+127.0.0.1:6379> ttl qqq
+(integer) 9
+127.0.0.1:6379> ttl qqq
+(integer) 8
+127.0.0.1:6379> ttl qqq
+(integer) 7
+127.0.0.1:6379> ttl qqq
+(integer) 4
+127.0.0.1:6379> ttl qqq
+(integer) 3
+127.0.0.1:6379> ttl qqq
+(integer) 2
+127.0.0.1:6379> ttl qqq
+(integer) 1
+127.0.0.1:6379> ttl qqq
+(integer) -2
+127.0.0.1:6379> keys qqq
+(empty array)
+127.0.0.1:6379> get qqq
+(nil)
+127.0.0.1:6379> keys * 
+(empty array)
+127.0.0.1:6379> 
